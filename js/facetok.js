@@ -14,30 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function to show the default CSS spinner
-function showSpinner() {
+function showSpinner(target) {
     const spinner = document.createElement('div');
-    spinner.id = 'loading-spinner';
+    spinner.className = 'image-loading-spinner';
     spinner.innerHTML = `<div class="default-spinner"></div>`;
-    document.body.appendChild(spinner);
+    target.appendChild(spinner);
 }
 
 // Function to hide the loading spinner
-function hideSpinner() {
-    const spinner = document.getElementById('loading-spinner');
+function hideSpinner(target) {
+    const spinner = target.querySelector('.image-loading-spinner');
     if (spinner) {
         spinner.remove();
     }
 }
 
-// Show spinner on initial page load
+// Show the main page spinner
 document.addEventListener('DOMContentLoaded', () => {
-    showSpinner();
+    showSpinner(document.body);
+
+    // Attach spinners to images
+    document.querySelectorAll('img').forEach((img) => {
+        const wrapper = img.parentElement;
+        showSpinner(wrapper);
+        img.addEventListener('load', () => hideSpinner(wrapper));
+        img.addEventListener('error', () => hideSpinner(wrapper));
+    });
 });
 
-// Hide spinner after initial content is loaded
+// Hide the main page spinner after all content is loaded
 window.onload = () => {
-    hideSpinner();
+    hideSpinner(document.body);
 };
+
 
 
 async function fetchPortraits() {
@@ -102,7 +111,7 @@ async function displayPortrait(portrait) {
     container.innerHTML = `
         <div class="facetok-card">
             <div class="logo-banner">
-                <i>Portretten uit wereldwijde erfgoedcollecties, afkomstig van Wikimedia</i>
+                <i>FaceTok - Portretten uit het archief van Wikimedia.</i>
                 <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
             </div>
             <div class="facetoklogo">
