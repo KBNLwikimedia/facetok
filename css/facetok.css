@@ -95,11 +95,25 @@ body {
     height: auto;
 }
 
+
+.share-icon img {
+    position: absolute;
+    top: calc(65% - 125px); /* Adjusting to be slightly above wplink */
+    right: 14px; /* Positioning to the right */
+    background: rgba(0, 0, 0, 0.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 50px; /* Adjust size as needed */
+}
+
+
 /* Flying Hearts Container */
 
 .heart-icon img {
     position: absolute;
-    top: calc(65% - 65px); /* Adjusting to be slightly above wplink */
+    top: calc(65% - 70px); /* Adjusting to be slightly above wplink */
     right: 10px; /* Positioning to the right */
     background: rgba(0, 0, 0, 0.0);
     display: flex;
@@ -107,7 +121,6 @@ body {
     align-items: center;
     cursor: pointer;
     width: 50px; /* Adjust size as needed */
-
 }
 
 #heart-container {

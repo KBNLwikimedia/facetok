@@ -53,11 +53,31 @@ async function displayPortrait(portrait) {
                 </h2>
                 <p id="extract-container" class="wplink">${extract}</p>
             </div>
+            <div class="share-icon" id="share-icon"><img src="media/share-icon.png" alt="Share Icon"></div>
             <div id="heart-icon" class="heart-icon"><img src="media/heart-icon.png" alt="Heart icon">️</div>
         </div>`;
-
+    initializeShareFeature();
     document.getElementById('heart-icon').addEventListener('click', (event) => {
         createHeart(event.clientX, event.clientY);
+    });
+}
+
+function initializeShareFeature() {
+    const shareIcon = document.getElementById('share-icon');
+    if (!shareIcon) return;
+
+    shareIcon.addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Check out this cool app!',
+                text: 'I found this awesome app, check it out!',
+                url: window.location.href,
+            })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.error('Error sharing', error));
+        } else {
+            alert('Your browser does not support the sharing feature.');
+        }
     });
 }
 
