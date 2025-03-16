@@ -42,7 +42,7 @@ async function displayPortrait(portrait) {
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
                 <!--<p style="margin-top: 10px;">${portrait.description}</p>-->
-                <p id="extract-container" class="extract-style">${extract}</p>
+                <p id="extract-container" class="wplink">${extract}</p>
             </div>
 
         </div>`;
