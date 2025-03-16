@@ -28,8 +28,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-
-
 .facetok-card {
     width: 100%;
     height: 100vh;
@@ -51,7 +49,6 @@ body {
     justify-content: left;
     gap: 20px;
 }
-
 .facetoklogo img {
     width: 120px;
     height: auto;
@@ -98,7 +95,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;  /* Limits to 3 lines */
+    -webkit-line-clamp: 4;  /* Limits to 4 lines */
     -webkit-box-orient: vertical;
 }
 

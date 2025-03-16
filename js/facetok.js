@@ -58,6 +58,44 @@ async function fetchPortraits() {
     }
 }
 
+async function fetchWikipediaExtract(wikipediaLink) {
+    try {
+        const MAX_WORDS = 50;
+        const MAX_CHARACTERS = 200;
+
+        const title = wikipediaLink.split('/').pop();
+        const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data for ${title}`);
+        }
+
+        const data = await response.json();
+        let extract = data.extract || 'No summary available.';
+
+        let truncated = false;
+
+        const words = extract.split(' ');
+        if (words.length > MAX_WORDS || extract.length > MAX_CHARACTERS) {
+            extract = words.slice(0, MAX_WORDS).join(' ');
+            if (extract.length > MAX_CHARACTERS) {
+                extract = extract.substring(0, MAX_CHARACTERS);
+            }
+            extract += '...';
+            truncated = true;
+        }
+
+        // Always show Read More at fixed position
+        extract += `<div class="read-more-container"><a href="${wikipediaLink}" target="_blank" class="read-more-link">Read more &rarr;</a></div>`;
+
+        return extract;
+    } catch (error) {
+        console.error(error);
+        return 'Failed to load summary.';
+    }
+}
+
 async function displayPortrait(portrait) {
     const extract = await fetchWikipediaExtract(portrait.wikipediaLink);
     const container = document.getElementById('portrait-container');
@@ -191,43 +229,7 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-async function fetchWikipediaExtract(wikipediaLink) {
-    try {
-        const MAX_WORDS = 160;
-        const MAX_CHARACTERS = 450;
 
-        const title = wikipediaLink.split('/').pop();
-        const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
-        const response = await fetch(apiUrl);
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch data for ${title}`);
-        }
-
-        const data = await response.json();
-        let extract = data.extract || 'No summary available.';
-
-        let truncated = false;
-
-        const words = extract.split(' ');
-        if (words.length > MAX_WORDS || extract.length > MAX_CHARACTERS) {
-            extract = words.slice(0, MAX_WORDS).join(' ');
-            if (extract.length > MAX_CHARACTERS) {
-                extract = extract.substring(0, MAX_CHARACTERS);
-            }
-            extract += '...';
-            truncated = true;
-        }
-
-        // Always show Read More at fixed position
-        extract += `<div class="read-more-container"><a href="${wikipediaLink}" target="_blank" class="read-more-link">Read more &rarr;</a></div>`;
-
-        return extract;
-    } catch (error) {
-        console.error(error);
-        return 'Failed to load summary.';
-    }
-}
 
 
 
