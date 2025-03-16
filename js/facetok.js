@@ -45,14 +45,15 @@ async function displayPortrait(portrait) {
             <div class="facetoklogo">
                <img src="media/facetok-logo.png" alt="Facetok Logo">
             </div>
+
             <img class="portrait" src="${portrait.imageUrl}" alt="Portrait of ${portrait.title}">
             <div class="wplink">
                 <h2>
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
-                <p id="extract-container" class="wplink">${extract}</p>
-                <div id="heart-icon">❤️</div>
+                <p id="extract-container" class="wplink portrait">${extract}</p>
             </div>
+            <div id="heart-icon" class="heart-icon"><img src="media/heart-icon.png" alt="Heart icon">️</div>
         </div>`;
 
     document.getElementById('heart-icon').addEventListener('click', (event) => {

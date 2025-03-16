@@ -95,6 +95,20 @@ body {
 }
 
 /* Flying Hearts Container */
+
+.heart-icon img {
+    position: absolute;
+    top: calc(65% + 5px); /* Adjusting to be slightly above wplink */
+    right: 10px; /* Positioning to the right */
+    background: rgba(0, 0, 0, 0.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 50px; /* Adjust size as needed */
+
+}
+
 #heart-container {
     position: fixed;
     top: 0;
@@ -108,11 +122,13 @@ body {
 /* Flying Hearts Animation */
 .flying-heart {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    clip-path: polygon(50% 0%, 61% 13%, 75% 18%, 80% 35%, 68% 50%, 50% 100%, 32% 50%, 20% 35%, 25% 18%, 39% 13%);
+    width: 24px;
+    height: 24px;
+    background-image: url('../media/heart-icon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     animation: flyUp 2s ease-out forwards;
+    pointer-events: none;
 }
 
 @keyframes flyUp {
@@ -121,7 +137,7 @@ body {
         opacity: 1;
     }
     100% {
-        transform: scale(1.5) translateY(-200px);
+        transform: scale(3.5) translateY(-200px);
         opacity: 0;
     }
 }
