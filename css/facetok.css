@@ -48,30 +48,58 @@ body {
     top: 60%;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 1);
-    padding: 10px;
+    height: 220px;
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
     box-sizing: border-box;
-    text-align: center;
+    text-align: left;
     touch-action: none;
+    overflow: hidden; /* Prevents overflow outside the box */
 }
 
-.wplink h2 { margin: 5px 0;}
+/* Ensure the title wraps and truncates if needed */
+.wplink h2 {
+    margin: 5px 0;
+    font-size: 24px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+/* Description is limited to fit within the box */
 .wplink p {
     font-size: 20px;
     color: #fff;
-    height: 120px; /* Fixed height */
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Add ellipsis for overflow */
-    //white-space: nowrap; /* Prevent text wrapping */
+    height: 80px;  /* Fixed height to avoid overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;  /* Limits to 3 lines */
+    -webkit-box-orient: vertical;
 }
 
+/* Default link style inside .wplink */
 .wplink a {
     font-size: 30px;
-    color: #ff00ff;
-    text-decoration: underline;
+    color: #ffffff;
+    text-decoration: none;
     font-weight: 600;
 }
+
+.read-more-container {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.wplink .read-more-link {
+    font-size:20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
 
 .logo-banner {
     position: absolute;
@@ -95,33 +123,40 @@ body {
     height: auto;
 }
 
-
-.share-icon img {
+/* Container for the icons */
+.icon-container {
     position: absolute;
-    top: calc(65% - 135px); /* Adjusting to be slightly above wplink */
-    right: 14px; /* Positioning to the right */
-    background: rgba(0, 0, 0, 0.0);
+    top: calc(65% - 20px);
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* General styles for icons */
+.icon-button {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 50px; /* Adjust size as needed */
+    transition: background 0.3s ease;
 }
 
-
-/* Flying Hearts Container */
-
-.heart-icon img {
-    position: absolute;
-    top: calc(65% - 70px); /* Adjusting to be slightly above wplink */
-    right: 10px; /* Positioning to the right */
-    background: rgba(0, 0, 0, 0.0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 50px; /* Adjust size as needed */
+/* On hover effect */
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
+
+/* Icon images */
+.icon-button img {
+    width: 22px;
+    height: 22px;
+}
+
 
 #heart-container {
     position: fixed;

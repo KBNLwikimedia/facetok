@@ -48,10 +48,17 @@ async function displayPortrait(portrait) {
                 <h2>
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
-                <p id="extract-container" class="wplink">${extract}</p>
+                <p id="extract-container">${extract}</p>
             </div>
-            <div class="share-icon" id="share-icon"><img src="media/share-icon.png" alt="Share Icon" loading="lazy"></div>
-            <div id="heart-icon" class="heart-icon"><img src="media/heart-icon.png" alt="Heart icon" loading="lazy"></div>
+
+            <div class="icon-container">
+                <div id="heart-icon" class="icon-button">
+                    <img src="media/heart-icon.png" alt="Heart Icon" loading="lazy">
+                </div>
+                <div id="share-icon" class="icon-button">
+                    <img src="media/share-icon.png" alt="Share Icon" loading="lazy">
+                </div>
+            </div>
         </div>`;
 
     initializeShareFeature();
@@ -159,6 +166,9 @@ window.addEventListener('keydown', (event) => {
 
 async function fetchWikipediaExtract(wikipediaLink) {
     try {
+        const MAX_WORDS = 50;
+        const MAX_CHARACTERS = 300;
+
         const title = wikipediaLink.split('/').pop();
         const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
         const response = await fetch(apiUrl);
@@ -170,10 +180,20 @@ async function fetchWikipediaExtract(wikipediaLink) {
         const data = await response.json();
         let extract = data.extract || 'No summary available.';
 
+        let truncated = false;
+
         const words = extract.split(' ');
-        if (words.length > 50) {
-            extract = words.slice(0, 50).join(' ') + '...';
+        if (words.length > MAX_WORDS || extract.length > MAX_CHARACTERS) {
+            extract = words.slice(0, MAX_WORDS).join(' ');
+            if (extract.length > MAX_CHARACTERS) {
+                extract = extract.substring(0, MAX_CHARACTERS);
+            }
+            extract += '...';
+            truncated = true;
         }
+
+        // Always show Read More at fixed position
+        extract += `<div class="read-more-container"><a href="${wikipediaLink}" target="_blank" class="read-more-link">Read more &rarr;</a></div>`;
 
         return extract;
     } catch (error) {
@@ -181,3 +201,8 @@ async function fetchWikipediaExtract(wikipediaLink) {
         return 'Failed to load summary.';
     }
 }
+
+
+
+
+
