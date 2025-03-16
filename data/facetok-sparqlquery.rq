@@ -1,6 +1,7 @@
 #https://w.wiki/DS6A
 #Endpoint: https://commons-query.wikimedia.org/sparql
 #Fetches images, names, descriptions and Wikipedia articles from people the category "Portraits from Koninklijke Bibliotheek" on Wikimedia Commons
+# TODO: filteren op .tif, .pdf en andere bestanden die niet in de app weergegeven kunnen worden
 SELECT DISTINCT ?imageurl
 ?depictsLabel ?depictsDescription ?depictsWikipediaNL
 WITH
