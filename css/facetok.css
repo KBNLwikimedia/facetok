@@ -172,7 +172,7 @@ body {
     position: absolute;
     width: 24px;
     height: 24px;
-    background-image: url('../media/heart-icon.png');
+    background-image: url('../media/heart-icon-red.png');
     background-size: cover;
     background-repeat: no-repeat;
     animation: flyUp 2s ease-out forwards;
