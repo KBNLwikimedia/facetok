@@ -69,7 +69,7 @@ function initializeShareFeature() {
             navigator.share({
                 title: 'Check out this cool app!',
                 text: 'I found this awesome app, check it out!',
-                url: 'https://www.facetok.nl',
+                url: 'https://www.facetok.eu',
             })
             .then(() => console.log('Successful share'))
             .catch((error) => console.error('Error sharing', error));
