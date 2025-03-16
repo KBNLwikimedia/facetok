@@ -6,6 +6,8 @@ let startY = 0;
 let scale = 1;
 let initialDistance = 0;
 
+// Function to fetch the portrait data from the CSV file
+
 async function fetchPortraits() {
     try {
         const response = await fetch('data/facetok-datacache.csv');
@@ -41,11 +43,26 @@ async function displayPortrait(portrait) {
                 <h2>
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
-                <!--<p style="margin-top: 10px;">${portrait.description}</p>-->
                 <p id="extract-container" class="wplink">${extract}</p>
+                <div id="heart-icon">❤️</div>
             </div>
-
         </div>`;
+
+    document.getElementById('heart-icon').addEventListener('click', (event) => {
+        createHeart(event.clientX, event.clientY);
+    });
+}
+
+function createHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.className = 'flying-heart';
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y}px`;
+    document.getElementById('heart-container').appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 2000);
 }
 
 function nextRandomPortrait() {
