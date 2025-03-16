@@ -13,6 +13,33 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchPortraits();
 });
 
+// Function to show the default CSS spinner
+function showSpinner() {
+    const spinner = document.createElement('div');
+    spinner.id = 'loading-spinner';
+    spinner.innerHTML = `<div class="default-spinner"></div>`;
+    document.body.appendChild(spinner);
+}
+
+// Function to hide the loading spinner
+function hideSpinner() {
+    const spinner = document.getElementById('loading-spinner');
+    if (spinner) {
+        spinner.remove();
+    }
+}
+
+// Show spinner on initial page load
+document.addEventListener('DOMContentLoaded', () => {
+    showSpinner();
+});
+
+// Hide spinner after initial content is loaded
+window.onload = () => {
+    hideSpinner();
+};
+
+
 async function fetchPortraits() {
     try {
         const response = await fetch('data/facetok-datacache.csv');
@@ -166,8 +193,8 @@ window.addEventListener('keydown', (event) => {
 
 async function fetchWikipediaExtract(wikipediaLink) {
     try {
-        const MAX_WORDS = 50;
-        const MAX_CHARACTERS = 300;
+        const MAX_WORDS = 160;
+        const MAX_CHARACTERS = 450;
 
         const title = wikipediaLink.split('/').pop();
         const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
