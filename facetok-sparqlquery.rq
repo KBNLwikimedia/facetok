@@ -1,7 +1,6 @@
 #https://w.wiki/DS6A
 #Endpoint: https://commons-query.wikimedia.org/sparql
 #Fetches images, names, descriptions and Wikipedia articles from people the category "Portraits from Koninklijke Bibliotheek" on Wikimedia Commons
-# TODO: filteren op .tif, .pdf en andere bestanden die niet in de app weergegeven kunnen worden
 SELECT DISTINCT ?imageurl
 ?depictsLabel ?depictsDescription ?depictsWikipediaNL
 WITH
@@ -13,7 +12,7 @@ WITH
     {
     bd:serviceParam wikibase:api "Generator";
     wikibase:endpoint "commons.wikimedia.org";
-    mwapi:gcmtitle "Category:Portraits from Koninklijke Bibliotheek" ;
+    mwapi:gcmtitle "Category:Portrait photographs from the National Archives and Records Administration" ;
     mwapi:generator "categorymembers" ;
      mwapi:gcmtype "file" ;
      mwapi:gcmlimit "max".
@@ -27,6 +26,7 @@ WHERE
 {
   INCLUDE %get_files
   ?file schema:url ?imageurl.
+  FILTER (REGEX(STR(?imageurl), "\\.(jpg|png|gif)$", "i"))
   ?file wdt:P180 ?depicts.
     SERVICE <https://query.wikidata.org/sparql> {
       ?depicts rdfs:label ?depictsLabel FILTER (lang(?depictsLabel) = "en").
