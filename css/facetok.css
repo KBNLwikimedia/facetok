@@ -60,10 +60,10 @@ body {
 .wplink p {
     font-size: 16px;
     color: #fff;
-    height: 50px; /* Fixed height */
+    height: 100px; /* Fixed height */
     overflow: hidden; /* Hide overflow text */
     text-overflow: ellipsis; /* Add ellipsis for overflow */
-    white-space: nowrap; /* Prevent text wrapping */
+    //white-space: nowrap; /* Prevent text wrapping */
 }
 
 .wplink a {

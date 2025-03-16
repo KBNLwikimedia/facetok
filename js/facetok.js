@@ -156,8 +156,8 @@ async function fetchWikipediaExtract(wikipediaLink) {
         let extract = data.extract || 'No summary available.';
 
         const words = extract.split(' ');
-        if (words.length > 30) {
-            extract = words.slice(0, 30).join(' ') + '...';
+        if (words.length > 50) {
+            extract = words.slice(0, 50).join(' ') + '...';
         }
 
         return extract;
