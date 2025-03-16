@@ -6,6 +6,13 @@ let startY = 0;
 let scale = 1;
 let initialDistance = 0;
 
+// Create the heart container
+document.addEventListener('DOMContentLoaded', () => {
+    const heartContainer = document.createElement('div');
+    heartContainer.id = 'heart-container';
+    document.body.appendChild(heartContainer);
+});
+
 // Function to fetch the portrait data from the CSV file
 
 async function fetchPortraits() {
