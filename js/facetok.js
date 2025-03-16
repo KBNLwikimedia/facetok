@@ -117,7 +117,7 @@ async function displayPortrait(portrait) {
     container.innerHTML = `
         <div class="facetok-card">
             <div class="logo-banner">
-                <i>FaceTok - Portretten uit het archief van Wikimedia.</i>
+                <i>FaceTok - Portretten de archieven van Wikimedia.</i>
                 <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
             </div>
             <div class="facetoklogo">
