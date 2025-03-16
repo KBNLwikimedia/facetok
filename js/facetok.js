@@ -13,55 +13,61 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchPortraits();
 });
 
-// Function to show the default CSS spinner
-function showSpinner(target) {
-    const spinner = document.createElement('div');
-    spinner.className = 'image-loading-spinner';
-    spinner.innerHTML = `<div class="default-spinner"></div>`;
-    target.appendChild(spinner);
-}
+function initializeShareFeature() {
+    const shareIcon = document.getElementById('share-icon');
+    if (!shareIcon) return;
 
-// Function to hide the loading spinner
-function hideSpinner(target) {
-    const spinner = target.querySelector('.image-loading-spinner');
-    if (spinner) {
-        spinner.remove();
-    }
-}
-
-// Show the main page spinner
-document.addEventListener('DOMContentLoaded', () => {
-    showSpinner(document.body);
-
-    // Attach spinners to images
-    document.querySelectorAll('img').forEach((img) => {
-        const wrapper = img.parentElement;
-        showSpinner(wrapper);
-        img.addEventListener('load', () => hideSpinner(wrapper));
-        img.addEventListener('error', () => hideSpinner(wrapper));
+    shareIcon.addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: "Gek op oude foto's en Wikipedia?",
+                text: 'Ik heb nu toch een kekke app gevonden, moet je zien: FaceTok!',
+                url: 'https://www.facetok.eu',
+            })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.error('Error sharing', error));
+        } else {
+            alert('Your browser does not support the sharing feature.');
+        }
     });
-});
+}
 
-// Hide the main page spinner after all content is loaded
-window.onload = () => {
-    hideSpinner(document.body);
-};
-
-
-
+// Robust function to fetch portraits from CSV
 async function fetchPortraits() {
     try {
         const response = await fetch('data/facetok-datacache.csv');
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const text = await response.text();
         const lines = text.split('\n').slice(1);
 
-        portraits = lines.map(line => {
-            const [imageUrl, title, description, wikipediaLink] = line.split(';');
+        portraits = lines.map((line, index) => {
+            const parts = line.split(';');
+            if (parts.length !== 4) {
+                console.warn(`Skipping malformed line ${index + 1}: ${line}`);
+                return null;
+            }
+
+            const [imageUrl, title, description, wikipediaLink] = parts.map(part => part.trim());
+
+            if (!imageUrl || !title || !wikipediaLink) {
+                console.warn(`Incomplete data in line ${index + 1}: ${line}`);
+                return null;
+            }
+
             return { imageUrl, title, description, wikipediaLink };
-        });
+        }).filter(portrait => portrait !== null);
+
+        if (portraits.length === 0) {
+            throw new Error('No valid portrait data found in the CSV.');
+        }
 
         document.getElementById('portrait-container').style.display = 'block';
         nextRandomPortrait();
+
     } catch (error) {
         console.error('Error loading CSV data:', error);
     }
@@ -141,24 +147,7 @@ async function displayPortrait(portrait) {
     });
 }
 
-function initializeShareFeature() {
-    const shareIcon = document.getElementById('share-icon');
-    if (!shareIcon) return;
 
-    shareIcon.addEventListener('click', () => {
-        if (navigator.share) {
-            navigator.share({
-                title: 'Check out this cool app!',
-                text: 'I found this awesome app, check it out!',
-                url: 'https://www.facetok.eu',
-            })
-            .then(() => console.log('Successful share'))
-            .catch((error) => console.error('Error sharing', error));
-        } else {
-            alert('Your browser does not support the sharing feature.');
-        }
-    });
-}
 
 function createHeart(x, y) {
     const heart = document.createElement('div');
@@ -233,10 +222,12 @@ window.addEventListener('wheel', (event) => {
 window.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowUp') {
         previousPortrait();
-    } else if (event.key === 'ArrowDown') {
+    } else if (event.key === 'ArrowDown' || event.key === ' ') {
         nextRandomPortrait();
     }
 });
+
+
 
 
 
