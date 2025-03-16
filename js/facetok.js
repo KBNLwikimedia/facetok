@@ -6,14 +6,12 @@ let startY = 0;
 let scale = 1;
 let initialDistance = 0;
 
-// Create the heart container
 document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.createElement('div');
     heartContainer.id = 'heart-container';
     document.body.appendChild(heartContainer);
+    fetchPortraits();
 });
-
-// Function to fetch the portrait data from the CSV file
 
 async function fetchPortraits() {
     try {
@@ -40,22 +38,22 @@ async function displayPortrait(portrait) {
         <div class="facetok-card">
             <div class="logo-banner">
                 <i>Portraits from heritage collections, powered by Wikimedia</i>
-                <img src="media/wikimedia-logos.png" alt="Wikimedia Logos">
+                <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
             </div>
             <div class="facetoklogo">
-               <img src="media/facetok-logo.png" alt="Facetok Logo">
+                <img src="media/facetok-logo.png" alt="Facetok Logo" loading="lazy">
             </div>
-
-            <img class="portrait" src="${portrait.imageUrl}" alt="Portrait of ${portrait.title}">
+            <img class="portrait" src="${portrait.imageUrl}" alt="Portrait of ${portrait.title}" loading="lazy">
             <div class="wplink">
                 <h2>
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
                 <p id="extract-container" class="wplink">${extract}</p>
             </div>
-            <div class="share-icon" id="share-icon"><img src="media/share-icon.png" alt="Share Icon"></div>
-            <div id="heart-icon" class="heart-icon"><img src="media/heart-icon.png" alt="Heart icon">️</div>
+            <div class="share-icon" id="share-icon"><img src="media/share-icon.png" alt="Share Icon" loading="lazy"></div>
+            <div id="heart-icon" class="heart-icon"><img src="media/heart-icon.png" alt="Heart icon" loading="lazy"></div>
         </div>`;
+
     initializeShareFeature();
     document.getElementById('heart-icon').addEventListener('click', (event) => {
         createHeart(event.clientX, event.clientY);
@@ -88,9 +86,7 @@ function createHeart(x, y) {
     heart.style.top = `${y}px`;
     document.getElementById('heart-container').appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 2000);
+    setTimeout(() => heart.remove(), 2000);
 }
 
 function nextRandomPortrait() {
@@ -161,7 +157,6 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-// Function to fetch the Wikipedia extract based on the provided Wikipedia link
 async function fetchWikipediaExtract(wikipediaLink) {
     try {
         const title = wikipediaLink.split('/').pop();
@@ -186,5 +181,3 @@ async function fetchWikipediaExtract(wikipediaLink) {
         return 'Failed to load summary.';
     }
 }
-
-fetchPortraits();

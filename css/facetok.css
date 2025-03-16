@@ -98,7 +98,7 @@ body {
 
 .share-icon img {
     position: absolute;
-    top: calc(65% - 125px); /* Adjusting to be slightly above wplink */
+    top: calc(65% - 135px); /* Adjusting to be slightly above wplink */
     right: 14px; /* Positioning to the right */
     background: rgba(0, 0, 0, 0.0);
     display: flex;
