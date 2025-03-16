@@ -72,7 +72,7 @@ async function fetchWikipediaExtract(wikipediaLink) {
         }
 
         const data = await response.json();
-        let extract = data.extract || 'No summary available.';
+        let extract = data.extract || 'Geen beschrijving uit Wikipedia beschikbaar.';
 
         let truncated = false;
 
@@ -87,12 +87,12 @@ async function fetchWikipediaExtract(wikipediaLink) {
         }
 
         // Always show Read More at fixed position
-        extract += `<div class="read-more-container"><a href="${wikipediaLink}" target="_blank" class="read-more-link">Read more &rarr;</a></div>`;
+        extract += `<div class="read-more-container"><a href="${wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a></div>`;
 
         return extract;
     } catch (error) {
         console.error(error);
-        return 'Failed to load summary.';
+        return 'Geen beschrijving uit Wikipedia beschikbaar.';
     }
 }
 
@@ -102,7 +102,7 @@ async function displayPortrait(portrait) {
     container.innerHTML = `
         <div class="facetok-card">
             <div class="logo-banner">
-                <i>Portraits from heritage collections, powered by Wikimedia</i>
+                <i>Portretten uit wereldwijde erfgoedcollecties, afkomstig van Wikimedia</i>
                 <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
             </div>
             <div class="facetoklogo">
