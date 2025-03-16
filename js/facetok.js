@@ -51,7 +51,7 @@ async function displayPortrait(portrait) {
                 <h2>
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
-                <p id="extract-container" class="wplink portrait">${extract}</p>
+                <p id="extract-container" class="wplink">${extract}</p>
             </div>
             <div id="heart-icon" class="heart-icon"><img src="media/heart-icon.png" alt="Heart icon">️</div>
         </div>`;

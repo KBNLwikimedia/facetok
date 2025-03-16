@@ -52,6 +52,7 @@ body {
     padding: 10px;
     box-sizing: border-box;
     text-align: center;
+    touch-action: none;
 }
 
 .wplink h2 { margin: 5px 0;}
