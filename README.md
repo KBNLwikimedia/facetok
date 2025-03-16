@@ -1,6 +1,6 @@
 # Facetok
 
-*Portraits from the collections of KB, national library of the Netherlands, powered by Wikimedia*
+*Portraits from heritage collections, powered by Wikimedia*
 
 *Latest update*: 16 March 2025
 
