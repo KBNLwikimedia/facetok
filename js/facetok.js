@@ -73,16 +73,16 @@ async function fetchPortraits() {
     }
 }
 
-async function fetchWikipediaExtract(wikipediaLink) {
+async function fetchWikipediaExtract(portrait) {
     try {
         const MAX_WORDS = 50;
         const MAX_CHARACTERS = 200;
 
-        const title = wikipediaLink.split('/').pop();
-        const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${title}`;
+        const title = portrait.wikipediaLink.split('/').pop();
         const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
-        const response = await fetch(apiUrl);
 
+        // Fetching data first
+        const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`Failed to fetch data for ${title}`);
         }
@@ -90,6 +90,7 @@ async function fetchWikipediaExtract(wikipediaLink) {
         const data = await response.json();
         let extract = data.extract || 'Geen beschrijving uit Wikipedia beschikbaar.';
 
+        // Process extract text
         const words = extract.split(' ');
         if (words.length > MAX_WORDS || extract.length > MAX_CHARACTERS) {
             extract = words.slice(0, MAX_WORDS).join(' ');
@@ -99,12 +100,16 @@ async function fetchWikipediaExtract(wikipediaLink) {
             extract += '...';
         }
 
+        // Commons URL creation after fetch success
+        const filename = portrait.imageUrl.split('/').pop();
+        const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${filename}`;
+
         extract += `<div class="fixed-commons-link-container">
                         <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
                     </div>`;
 
         extract += `<div class="read-more-container">
-                        <a href="${wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a>
+                        <a href="${portrait.wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a>
                     </div>`;
 
         return extract;
@@ -116,7 +121,7 @@ async function fetchWikipediaExtract(wikipediaLink) {
 
 
 async function displayPortrait(portrait) {
-    const extract = await fetchWikipediaExtract(portrait.wikipediaLink);
+    const extract = await fetchWikipediaExtract(portrait);
     const filename = portrait.imageUrl.split('/').pop();
     const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${filename}`;
 
@@ -153,6 +158,7 @@ async function displayPortrait(portrait) {
             <br clear="all"/>
             <a href="${commonsUrl}" target="_blank">Bekijk op Wikimedia Commons &rarr;</a>
         </div>`;
+
 
     // Initialize share feature
     initializeShareFeature();
