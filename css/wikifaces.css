@@ -131,8 +131,8 @@ body {
 }
 
 .bottom-banner {
-    position: sticky;
-    bottom: 10px;
+    position: relative;
+    bottom: 0px;
     left: 0;
     width: 100vw;
     height: 40px;
@@ -147,11 +147,11 @@ body {
 }
 
 .bottom-banner a {
-    margin-left: 20px;
+    margin-left: 10px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .bottom-banner p {
@@ -165,6 +165,7 @@ body {
 .bottom-banner img {
     width: 100px;
     height: auto;
+    margin-top: 5px;
     margin-right: 20px;
 }
 
@@ -189,25 +190,17 @@ body {
 
     .wplink p {
         font-size: 16px;
-
     }
-
-    .bottom-banner {
-        flex-direction: column;
-        padding: 10px;
+    .bottom-banner img {
+        width: 80px;
     }
-
+    .bottom-banner a {
+        font-size: 14px;
+    }
     .bottom-banner p {
         font-size: 12px;
     }
 
-    .bottom-banner img {
-        width: 80px;
-    }
-
-    .bottom-banner a {
-        font-size: 12px;
-    }
     .read-more-container,
     .fixed-commons-link-container {
         position: static;
@@ -226,6 +219,12 @@ body {
     .wplink .fixed-commons-link {
         font-size: 16px;
     }
+    .bottom-banner a {
+        font-size: 14px;
+    }
+    .bottom-banner p {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 300px) {
@@ -237,8 +236,11 @@ body {
         width: 50px;
     }
 
-    .bottom-banner p, .bottom-banner a {
-        font-size: 9px;
+    .bottom-banner a {
+        font-size: 12px;
+    }
+    .bottom-banner p {
+        font-size: 10px;
     }
 }
 

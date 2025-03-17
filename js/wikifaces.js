@@ -160,7 +160,7 @@ async function displayPortrait(portrait) {
                 </div>
                 <p>Faces from the archives of Wikimedia</p>
                 <div>
-                    <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
+                    <img src="media/wikimedia-logos2.png" alt="Wikimedia Logos" loading="lazy">
                 </div>
             </div>
         </div>
