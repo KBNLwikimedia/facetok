@@ -1,8 +1,8 @@
-# Facetok
+# WikiFaces
 
-*FaceTok - Portretten de archieven van Wikimedia.*
+*WikiFaces - Faces from the archives of Wikimedia*
 
-*Latest update*: 16 March 2025
+*Latest update*: 17 March 2025
 
 --------------
 

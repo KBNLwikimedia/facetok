@@ -149,7 +149,7 @@ async function displayPortrait(portrait) {
             <!-- Updated HTML structure for alignment -->
             <div class="bottom-banner">
                 <div class="left-section">
-                    <a href="https://facetok.kbnlwikimedia.github.io" target="_blank">WikiFaces</a>
+                    <a href="https://github.com/KBNLwikimedia/wikifaces" target="_blank">WikiFaces</a>
                 </div>
                 <p>Faces from the archives of Wikimedia</p>
                 <div class="right-section">

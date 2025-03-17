@@ -129,7 +129,7 @@ body {
 
 .bottom-banner {
     position: sticky;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     width: 100%;
     height: 40px;
@@ -142,30 +142,25 @@ body {
     gap: 10px;
     z-index: 1000;
 }
-
 .bottom-banner a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
 }
-
 .bottom-banner p {
     margin: 0;
     text-align: center;
     flex-grow: 1;
     color: #fff;
 }
-
 .bottom-banner img {
     width: 120px;
     height: auto;
     margin-right: 10px;
 }
-
 .bottom-banner .left-section {
     padding-left: 10px;
 }
-
 .bottom-banner .right-section {
     padding-right: 10px;
 }
