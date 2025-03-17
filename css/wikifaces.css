@@ -138,6 +138,36 @@ body {
     margin-right: 20px;
 }
 
+.icon-container {
+    position: fixed;
+    top: 30px; /* Makes position flexible with screen height */
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 0px solid rgba(55, 55, 255, 0.8);
+}
+.icon-button {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.icon-button img {
+    width: 22px;
+    height: 22px;
+}
+
+.icon-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
 
 @media (max-width: 600px) {
     .facetok-card {
@@ -150,11 +180,12 @@ body {
 
     .wplink {
         height: auto;
-        padding: 20x;
+        padding: 20px;
     }
 
-    .wplink h2 {
-        font-size: 20px;
+    .wplink a {
+        font-size: 24px;
+        font-weight: 600;
     }
     .wplink p {
         font-size: 18px;
@@ -180,25 +211,45 @@ body {
         margin-bottom: 5px;
         font-size: 18px;
     }
-}
 
-@media (max-height: 300px) {
-    .bottom-banner {
-        display: none;
+    .icon-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .icon-button img {
+        width: 20px;
+        height: 20px;
     }
 }
 
 @media (max-width: 400px) {
-
     .wplink .read-more-link,
     .wplink .fixed-commons-link {
         font-size: 16px;
     }
+
     .bottom-banner a {
         font-size: 14px;
     }
     .bottom-banner p {
         font-size: 12px;
+    }
+
+    .icon-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon-button img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-height: 300px) {
+    .bottom-banner {
+        display: none;
     }
 }
 
@@ -217,33 +268,16 @@ body {
     .bottom-banner p {
         font-size: 10px;
     }
-}
 
-.icon-container {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-}
+    .icon-button {
+        width: 25px;
+        height: 25px;
+    }
 
-.icon-button {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon-button img {
-    width: 22px;
-    height: 22px;
-}
-
-.icon-button:hover {
-    background: rgba(255, 255, 255, 0.3);
+    .icon-button img {
+        width: 16px;
+        height: 16px;
+    }
 }
 
 
@@ -306,17 +340,17 @@ body {
     background-image: url('../media/heart-icon-red.png');
     background-size: cover;
     background-repeat: no-repeat;
-    animation: flyUp 2s ease-out forwards;
+    animation: flyLeft 1s ease-out forwards;
     pointer-events: none;
 }
 
-@keyframes flyUp {
+@keyframes flyLeft {
     0% {
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateX(0);
         opacity: 1;
     }
     100% {
-        transform: scale(3.5) translateY(-200px);
+        transform: scale(3.5) translateX(-200px) translateY(150px);
         opacity: 0;
     }
 }
