@@ -44,11 +44,10 @@ body {
 }
 
 .wplink {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: 30vh;
-    bottom: 15vh;
     left: 0;
+    bottom: 60px; /* Adjust this value to move it lower */
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -57,7 +56,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 4px solid rgba(255, 55, 255, 0.8);
+    border: 0px solid rgba(255, 55, 255, 0.8);
 }
 
 .wplink h2 {
@@ -113,7 +112,7 @@ body {
     justify-content: space-between;
     gap: 10px;
     z-index: 0;
-    border: 4px solid rgba(55, 55, 255, 0.8);
+    border: 0px solid rgba(55, 55, 255, 0.8);
 }
 
 .bottom-banner a {
@@ -154,10 +153,6 @@ body {
         padding: 20x;
     }
 
-    .wplink h2 {
-        font-size: 6px;
-    }
-
     .wplink p {
         font-size: 16px;
     }
@@ -180,10 +175,11 @@ body {
     .wplink .read-more-link {
         display: block;
         margin-bottom: 5px;
+        font-size: 16px;
     }
 }
 
-@media (max-height: 400px) {
+@media (max-height: 300px) {
     .bottom-banner {
         display: none;
     }

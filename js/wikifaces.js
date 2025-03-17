@@ -13,7 +13,6 @@ window.addEventListener("orientationchange", () => {
     }
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.createElement('div');
     heartContainer.id = 'heart-container';
