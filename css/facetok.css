@@ -15,7 +15,8 @@ body {
     background-color: #1e1e1e;
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -30,10 +31,11 @@ body {
     justify-content: left;
     gap: 20px;
 }
+
 .wikifaceslogo img {
     width: 120px;
     height: auto;
-    filter: invert(1) brightness(2) ;
+    filter: invert(1) brightness(2);
 }
 
 .portrait {
@@ -46,20 +48,18 @@ body {
 
 .wplink {
     position: absolute;
-    top: 60%;
-    left: 0;
     width: 100%;
-    height: 220px;
+    bottom: 70px;
+    left: 0px;
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     box-sizing: border-box;
     text-align: left;
     touch-action: none;
-    overflow: hidden; /* Prevents overflow outside the box */
+    overflow: hidden;
 }
 
-/* Ensure the title wraps and truncates if needed */
 .wplink h2 {
     margin: 5px 0;
     font-size: 24px;
@@ -69,19 +69,16 @@ body {
     text-overflow: ellipsis;
 }
 
-/* Description is limited to fit within the box */
 .wplink p {
     font-size: 20px;
     color: #fff;
-    height: 80px;  /* Fixed height to avoid overflow */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;  /* Limits to 4 lines */
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
-/* Default link style inside .wplink */
 .wplink a {
     font-size: 30px;
     color: #ffffff;
@@ -89,38 +86,37 @@ body {
     font-weight: 600;
 }
 
-/* Fixed position for the Read more link */
 .read-more-container {
     position: absolute;
     bottom: 20px;
     left: 20px;
 }
+
 .wplink .read-more-link {
-    font-size:20px;
+    font-size: 20px;
     color: #ffffff;
     text-decoration: none;
 }
 
-/* Fixed position for the Wikimedia Commons link */
 .fixed-commons-link-container {
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
+
 .wplink .fixed-commons-link {
-    font-size:20px;
+    font-size: 20px;
     color: #fff;
     text-decoration: none;
 }
 
-
 .bottom-banner {
-    position: absolute;
-    top: calc(83% + 30px);
-    left: 0px;
+    position: sticky;
+    bottom: 0px;
+    left: 0;
     width: 100%;
     height: 40px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 1);
     padding: 5px 5px;
     font-size: 15px;
     font-style: italic;
@@ -129,23 +125,24 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-
 }
+
 .bottom-banner img {
     width: 120px;
     height: auto;
 }
 
-/* Container for the icons */
 .icon-container {
     position: absolute;
-    top: calc(65% - 20px);
+    width: 100%;
+    bottom: 250px;
     right: 20px;
+    justify-content: right;
     display: flex;
     gap: 10px;
+    border: 0px solid rgba(255, 255, 255, 0.1);
 }
 
-/* General styles for icons */
 .icon-button {
     width: 40px;
     height: 40px;
@@ -159,19 +156,16 @@ body {
     transition: background 0.3s ease;
 }
 
-/* On hover effect */
 .icon-button:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* Icon images */
 .icon-button img {
     width: 22px;
     height: 22px;
     filter: invert(1) brightness(2);
 }
 
-/* Lightbox overall container */
 .lightbox {
     display: none;
     position: fixed;
@@ -180,14 +174,12 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    padding: 20px;
     background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-/* Styling for the Commons link */
 .lightbox a {
     color: #fff;
     text-decoration: none;
@@ -195,27 +187,25 @@ body {
     text-align: center;
 }
 
-/* Lightbox content (the image) */
 .lightbox-content {
-    max-width: 90%;
+    max-width: 100%;
     max-height: 80vh;
+    align-items: center;
+    padding: 10px;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
-/* Close button for the lightbox */
 .close-lightbox {
     position: absolute;
     top: 15px;
-    right: 55px;
+    right: 25px;
     color: #fff;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
 }
-
-
 
 #heart-container {
     position: fixed;
@@ -227,7 +217,6 @@ body {
     overflow: hidden;
 }
 
-/* Flying Hearts Animation */
 .flying-heart {
     position: absolute;
     width: 24px;
