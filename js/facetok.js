@@ -146,9 +146,15 @@ async function displayPortrait(portrait) {
                     <img src="media/share-icon.png" alt="Share Icon" loading="lazy">
                 </div>
             </div>
+            <!-- Updated HTML structure for alignment -->
             <div class="bottom-banner">
-                <b>WikiFaces</b><br/>Faces from the archives of Wikimedia
-                <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
+                <div class="left-section">
+                    <a href="https://facetok.kbnlwikimedia.github.io" target="_blank">WikiFaces</a>
+                </div>
+                <p>Faces from the archives of Wikimedia</p>
+                <div class="right-section">
+                    <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
+                </div>
             </div>
         </div>
 
