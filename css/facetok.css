@@ -49,9 +49,11 @@ body {
 .wplink {
     position: absolute;
     width: 100%;
-    top: 450px;
-    left: 0px;
     height: 30vh;
+    min-height: 150px;
+    max-height: 40vh;
+    bottom: 15vh;
+    left: 0;
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -59,10 +61,19 @@ body {
     text-align: left;
     touch-action: none;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-height: 400px) {
+    .wplink {
+        bottom: 5vh;
+    }
 }
 
 .wplink h2 {
-    margin: 5px 0;
+    margin: 0 0 0px 0;
     font-size: 24px;
     color: #fff;
     white-space: nowrap;
@@ -71,6 +82,7 @@ body {
 }
 
 .wplink p {
+    margin-top: 0px;
     font-size: 20px;
     color: #fff;
     overflow: hidden;
@@ -91,6 +103,7 @@ body {
     position: absolute;
     bottom: 20px;
     left: 20px;
+    margin-top: 0px;
     border: 0px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -104,6 +117,7 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
+    margin-top: 0px;
     border: 0px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -137,15 +151,12 @@ body {
 
 .icon-container {
     position: absolute;
-    width: 95%;
-    top: 430px;
-    left: 0px;
-    right: 160px;
+    bottom: 42vh;
+    right: 20px;
     border: 0px solid rgba(255, 255, 255, 0.1);
-    justify-content: right;
+    justify-content: flex-end;
     display: flex;
     gap: 10px;
-
 }
 
 .icon-button {
