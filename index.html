@@ -1,13 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Meta Tags -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WikiFaces showcases historical portraits from the archives of Wikimedia. Discover and explore faces from history.">
+    <meta name="keywords" content="WikiFaces, Wikimedia, historical portraits, faces, archives">
+    <meta name="author" content="WikiFaces Team">
+
+    <!-- Title -->
     <title>WikiFaces - Faces from the archives of Wikimedia.</title>
+
+    <!-- Open Graph Meta Tags (for better sharing on social media) -->
+    <meta property="og:title" content="WikiFaces - Faces from the archives of Wikimedia">
+    <meta property="og:description" content="Discover historical portraits from the Wikimedia archives. Dive into the faces of history.">
+    <meta property="og:image" content="https://www.wikifaces.org/media/wikifaces-logo.png">
+    <meta property="og:url" content="https://www.wikifaces.org">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WikiFaces - Faces from the archives of Wikimedia">
+    <meta name="twitter:description" content="Explore historical portraits from Wikimedia archives and discover the stories behind them.">
+    <meta name="twitter:image" content="https://www.wikifaces.org/media/wikifaces-logo.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.wikifaces.org">
+
+    <!-- Fonts and Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/facetok.css">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="media/wikifaces.ico">
+
+    <!-- JavaScript -->
     <script type="text/javascript" src="js/facetok.js"></script>
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "WikiFaces",
+      "url": "https://www.wikifaces.org",
+      "description": "WikiFaces showcases historical portraits from the archives of Wikimedia. Discover and explore faces from history.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "WikiFaces Team",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.wikifaces.org/media/wikifaces-logo.png"
+        }
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wikifaces.org/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body>
     <div id="portrait-container" style="display:none"></div>

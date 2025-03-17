@@ -100,7 +100,7 @@ async function fetchWikipediaExtract(wikipediaLink) {
         }
 
         extract += `<div class="fixed-commons-link-container">
-                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk hele afbeelding &rarr;</a>
+                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
                     </div>`;
 
         extract += `<div class="read-more-container">
@@ -151,7 +151,7 @@ async function displayPortrait(portrait) {
             <span class="close-lightbox" id="close-lightbox">&times;</span>
             <a href="${commonsUrl}" target="_blank"><img class="lightbox-content" src="${portrait.imageUrl}" alt="Original Image"></a>
             <br clear="all"/>
-            <a href="${commonsUrl}" target="_blank">Bekijk afbeelding op Wikimedia Commons</a>
+            <a href="${commonsUrl}" target="_blank">Bekijk op Wikimedia Commons &rarr;</a>
         </div>`;
 
     // Initialize share feature
