@@ -142,7 +142,7 @@ async function displayPortrait(portrait) {
                 </div>
             </div>
             <div class="bottom-banner">
-                <i>WikiFaces - Faces from the archives of Wikimedia.</i>
+                <b>WikiFaces</b><br/>Faces from the archives of Wikimedia
                 <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
             </div>
         </div>
