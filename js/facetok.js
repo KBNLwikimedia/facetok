@@ -20,9 +20,9 @@ function initializeShareFeature() {
     shareIcon.addEventListener('click', () => {
         if (navigator.share) {
             navigator.share({
-                title: "Gek op oude foto's en Wikipedia?",
-                text: 'Ik heb nu toch een kekke app gevonden, moet je zien: FaceTok!',
-                url: 'https://www.facetok.eu',
+                title: "Are you into Wikipedia?",
+                text: 'Check out WikiFaces: Faces from the archives of Wikimedia: ',
+                url: 'https://www.wikifaces.org',
             })
             .then(() => console.log('Successful share'))
             .catch((error) => console.error('Error sharing', error));
@@ -35,7 +35,7 @@ function initializeShareFeature() {
 // Robust function to fetch portraits from CSV
 async function fetchPortraits() {
     try {
-        const response = await fetch('data/facetok-datacache.csv');
+        const response = await fetch('data/wikifaces-datacache.csv');
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -79,6 +79,7 @@ async function fetchWikipediaExtract(wikipediaLink) {
         const MAX_CHARACTERS = 200;
 
         const title = wikipediaLink.split('/').pop();
+        const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${title}`;
         const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
         const response = await fetch(apiUrl);
 
@@ -89,8 +90,6 @@ async function fetchWikipediaExtract(wikipediaLink) {
         const data = await response.json();
         let extract = data.extract || 'Geen beschrijving uit Wikipedia beschikbaar.';
 
-        let truncated = false;
-
         const words = extract.split(' ');
         if (words.length > MAX_WORDS || extract.length > MAX_CHARACTERS) {
             extract = words.slice(0, MAX_WORDS).join(' ');
@@ -98,11 +97,15 @@ async function fetchWikipediaExtract(wikipediaLink) {
                 extract = extract.substring(0, MAX_CHARACTERS);
             }
             extract += '...';
-            truncated = true;
         }
 
-        // Always show Read More at fixed position
-        extract += `<div class="read-more-container"><a href="${wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a></div>`;
+        extract += `<div class="fixed-commons-link-container">
+                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk hele afbeelding &rarr;</a>
+                    </div>`;
+
+        extract += `<div class="read-more-container">
+                        <a href="${wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a>
+                    </div>`;
 
         return extract;
     } catch (error) {
@@ -111,17 +114,17 @@ async function fetchWikipediaExtract(wikipediaLink) {
     }
 }
 
+
 async function displayPortrait(portrait) {
     const extract = await fetchWikipediaExtract(portrait.wikipediaLink);
+    const filename = portrait.imageUrl.split('/').pop();
+    const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${filename}`;
+
     const container = document.getElementById('portrait-container');
     container.innerHTML = `
         <div class="facetok-card">
-            <div class="logo-banner">
-                <i>FaceTok - Portretten de archieven van Wikimedia.</i>
-                <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
-            </div>
-            <div class="facetoklogo">
-                <img src="media/facetok-logo.png" alt="Facetok Logo" loading="lazy">
+            <div class="wikifaceslogo">
+                <img src="media/wikifaces-logo.png" alt="WikiFaces Logo" loading="lazy">
             </div>
             <img class="portrait" src="${portrait.imageUrl}" alt="Portrait of ${portrait.title}" loading="lazy">
             <div class="wplink">
@@ -130,7 +133,6 @@ async function displayPortrait(portrait) {
                 </h2>
                 <p id="extract-container">${extract}</p>
             </div>
-
             <div class="icon-container">
                 <div id="heart-icon" class="icon-button">
                     <img src="media/heart-icon.png" alt="Heart Icon" loading="lazy">
@@ -139,15 +141,45 @@ async function displayPortrait(portrait) {
                     <img src="media/share-icon.png" alt="Share Icon" loading="lazy">
                 </div>
             </div>
+            <div class="bottom-banner">
+                <i>WikiFaces - Faces from the archives of Wikimedia.</i>
+                <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
+            </div>
+        </div>
+
+        <div id="lightbox" class="lightbox">
+            <span class="close-lightbox" id="close-lightbox">&times;</span>
+            <a href="${commonsUrl}" target="_blank"><img class="lightbox-content" src="${portrait.imageUrl}" alt="Original Image"></a>
+            <br clear="all"/>
+            <a href="${commonsUrl}" target="_blank">Bekijk afbeelding op Wikimedia Commons</a>
         </div>`;
 
+    // Initialize share feature
     initializeShareFeature();
+
+    // Heart icon click event
     document.getElementById('heart-icon').addEventListener('click', (event) => {
         createHeart(event.clientX, event.clientY);
     });
+
+    // Open Lightbox
+    document.getElementById('open-lightbox').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('lightbox').style.display = 'flex';
+    });
+
+    // Close Lightbox
+    document.getElementById('close-lightbox').addEventListener('click', () => {
+        document.getElementById('lightbox').style.display = 'none';
+    });
+
+    // Close on Outside Click
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target.id === 'lightbox') {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    });
 }
-
-
 
 function createHeart(x, y) {
     const heart = document.createElement('div');

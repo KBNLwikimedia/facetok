@@ -6,6 +6,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     overflow: hidden;
     height: 100vh;
+    touch-action: none;
 }
 
 .facetok-card {
@@ -18,7 +19,7 @@ body {
     align-items: center;
 }
 
-.facetoklogo {
+.wikifaceslogo {
     position: absolute;
     top: 15px;
     left: 10px;
@@ -29,9 +30,10 @@ body {
     justify-content: left;
     gap: 20px;
 }
-.facetoklogo img {
+.wikifaceslogo img {
     width: 120px;
     height: auto;
+    filter: invert(1) brightness(2) ;
 }
 
 .portrait {
@@ -87,20 +89,32 @@ body {
     font-weight: 600;
 }
 
+/* Fixed position for the Read more link */
 .read-more-container {
     position: absolute;
     bottom: 20px;
     left: 20px;
 }
-
 .wplink .read-more-link {
     font-size:20px;
     color: #ffffff;
     text-decoration: none;
 }
 
+/* Fixed position for the Wikimedia Commons link */
+.fixed-commons-link-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.wplink .fixed-commons-link {
+    font-size:20px;
+    color: #fff;
+    text-decoration: none;
+}
 
-.logo-banner {
+
+.bottom-banner {
     position: absolute;
     top: calc(83% + 30px);
     left: 0px;
@@ -117,7 +131,7 @@ body {
     gap: 10px;
 
 }
-.logo-banner img {
+.bottom-banner img {
     width: 120px;
     height: auto;
 }
@@ -156,6 +170,52 @@ body {
     height: 22px;
     filter: invert(1) brightness(2);
 }
+
+/* Lightbox overall container */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Styling for the Commons link */
+.lightbox a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Lightbox content (the image) */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Close button for the lightbox */
+.close-lightbox {
+    position: absolute;
+    top: 15px;
+    right: 55px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
 
 #heart-container {
     position: fixed;

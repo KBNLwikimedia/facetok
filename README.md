@@ -1,6 +1,6 @@
 # Facetok
 
-*Portraits from heritage collections, powered by Wikimedia*
+*FaceTok - Portretten de archieven van Wikimedia.*
 
 *Latest update*: 16 March 2025
 
