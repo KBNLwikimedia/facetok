@@ -6,6 +6,13 @@ let startY = 0;
 let scale = 1;
 let initialDistance = 0;
 
+// Detect orientation change and warn the user
+window.addEventListener("orientationchange", () => {
+    if (window.orientation === 90 || window.orientation === -90) {
+        alert("This aaaapp is best viewed in portrait mode. Please rotate your device.");
+    }
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.createElement('div');
