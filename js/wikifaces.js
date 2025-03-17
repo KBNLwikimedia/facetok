@@ -104,14 +104,13 @@ async function fetchWikipediaExtract(portrait) {
         const filename = portrait.imageUrl.split('/').pop();
         const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${filename}`;
 
-        extract += `<div class="fixed-commons-link-container">
-                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
-                    </div>`;
-
         extract += `<div class="read-more-container">
                         <a href="${portrait.wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a>
                     </div>`;
-
+        extract += `<div class="fixed-commons-link-container">
+                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
+                    </div>`;
+                    
         return extract;
     } catch (error) {
         console.error(error);
@@ -148,11 +147,11 @@ async function displayPortrait(portrait) {
             </div>
             <!-- Updated HTML structure for alignment -->
             <div class="bottom-banner">
-                <div class="left-section">
+                <div>
                     <a href="https://github.com/KBNLwikimedia/wikifaces" target="_blank">WikiFaces</a>
                 </div>
                 <p>Faces from the archives of Wikimedia</p>
-                <div class="right-section">
+                <div>
                     <img src="media/wikimedia-logos.png" alt="Wikimedia Logos" loading="lazy">
                 </div>
             </div>
@@ -160,9 +159,10 @@ async function displayPortrait(portrait) {
 
         <div id="lightbox" class="lightbox">
             <span class="close-lightbox" id="close-lightbox">&times;</span>
-            <a href="${commonsUrl}" target="_blank"><img class="lightbox-content" src="${portrait.imageUrl}" alt="Original Image"></a>
-            <br clear="all"/>
             <a href="${commonsUrl}" target="_blank">Bekijk op Wikimedia Commons &rarr;</a>
+            <br clear="all"/>
+            <a href="${commonsUrl}" target="_blank"><img class="lightbox-content" src="${portrait.imageUrl}" alt="Original Image"></a>
+
         </div>`;
 
 

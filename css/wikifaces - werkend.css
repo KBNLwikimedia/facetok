@@ -16,7 +16,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -25,9 +25,11 @@ body {
     top: 15px;
     left: 10px;
     width: 100%;
-    padding: 5px;
+    background: rgba(0, 0, 0, 0.0);
+    padding: 5px 5px;
     display: flex;
     justify-content: left;
+    gap: 20px;
 }
 
 .wikifaceslogo img {
@@ -40,6 +42,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    touch-action: none;
     transition: transform 0.2s ease;
 }
 
@@ -47,28 +50,46 @@ body {
     position: absolute;
     width: 100%;
     height: 30vh;
+    min-height: 150px;
+    max-height: 40vh;
     bottom: 15vh;
     left: 0;
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     box-sizing: border-box;
+    text-align: left;
+    touch-action: none;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+@media (max-height: 400px) {
+    .wplink {
+        bottom: 5vh;
+    }
+}
+
 .wplink h2 {
-    margin: 0 0 10px 0;
+    margin: 0 0 0px 0;
     font-size: 24px;
     color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .wplink p {
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 20px;
     color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .wplink a {
@@ -78,8 +99,7 @@ body {
     font-weight: 600;
 }
 
-.read-more-container,
-.fixed-commons-link-container {
+.read-more-container {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -87,143 +107,70 @@ body {
     border: 0px solid rgba(255, 255, 255, 0.1);
 }
 
-.fixed-commons-link-container {
-    left: auto;
-    right: 20px;
-}
-
-.wplink .read-more-link,
-.wplink .fixed-commons-link {
+.wplink .read-more-link {
     font-size: 20px;
     color: #ffffff;
     text-decoration: none;
 }
 
+.fixed-commons-link-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin-top: 0px;
+    border: 0px solid rgba(255, 255, 255, 0.1);
+}
+
+.wplink .fixed-commons-link {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
 .bottom-banner {
     position: sticky;
-    bottom: 10;
+    bottom: 40px;
     left: 0;
     width: 100%;
     height: 40px;
     background: rgba(0, 0, 0, 1);
     padding: 5px 10px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     z-index: 1000;
 }
-
 .bottom-banner a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
 }
-
 .bottom-banner p {
     margin: 0;
     text-align: center;
     flex-grow: 1;
     color: #fff;
-    font-size: 14px;
 }
-
 .bottom-banner img {
-    width: 100px;
+    width: 120px;
     height: auto;
     margin-right: 10px;
 }
-
-
-@media (max-width: 600px) {
-    .facetok-card {
-        flex-direction: column;
-    }
-
-    .wikifaceslogo img {
-        width: 100px;
-    }
-
-    .wplink {
-        height: auto;
-        padding: 20x;
-    }
-
-    .wplink h2 {
-        font-size: 6px;
-    }
-
-    .wplink p {
-        font-size: 16px;
-
-    }
-
-    .bottom-banner {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .bottom-banner p {
-        margin: 5px 0;
-        font-size: 12px;
-    }
-
-    .bottom-banner img {
-        width: 80px;
-    }
-
-    .bottom-banner a {
-        font-size: 12px;
-    }
-    .read-more-container,
-    .fixed-commons-link-container {
-        position: static;
-        margin-top: 10px;
-    }
-    .wplink .fixed-commons-link ,
-    .wplink .read-more-link {
-        display: block;
-        margin-bottom: 5px;
-    }
+.bottom-banner .left-section {
+    padding-left: 10px;
 }
-
-@media (max-width: 400px) {
-    .bottom-banner img {
-        width: 60px;
-    }
-
-    .bottom-banner p, .bottom-banner a {
-        font-size: 10px;
-    }
-
-    .bottom-banner {
-        padding: 5px;
-    }
-    .wplink .read-more-link,
-    .wplink .fixed-commons-link {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 300px) {
-    .bottom-banner img {
-        width: 50px;
-    }
-
-    .bottom-banner p, .bottom-banner a {
-        font-size: 9px;
-    }
-
-    .bottom-banner {
-        gap: 0px;
-    }
+.bottom-banner .right-section {
+    padding-right: 10px;
 }
 
 .icon-container {
     position: absolute;
-    bottom: 20px;
+    bottom: 42vh;
     right: 20px;
+    border: 0px solid rgba(255, 255, 255, 0.1);
+    justify-content: flex-end;
     display: flex;
     gap: 10px;
 }
@@ -232,21 +179,24 @@ body {
     width: 40px;
     height: 40px;
     background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.icon-button img {
-    width: 22px;
-    height: 22px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .icon-button:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
+.icon-button img {
+    width: 22px;
+    height: 22px;
+    filter: invert(1) brightness(2);
+}
 
 .lightbox {
     display: none;
@@ -267,7 +217,6 @@ body {
     text-decoration: none;
     font-size: 18px;
     text-align: center;
-    padding: 10px;
 }
 
 .lightbox-content {
