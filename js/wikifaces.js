@@ -6,6 +6,7 @@ let startY = 0;
 let scale = 1;
 let initialDistance = 0;
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.createElement('div');
     heartContainer.id = 'heart-container';
@@ -110,7 +111,7 @@ async function fetchWikipediaExtract(portrait) {
         extract += `<div class="fixed-commons-link-container">
                         <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
                     </div>`;
-                    
+
         return extract;
     } catch (error) {
         console.error(error);

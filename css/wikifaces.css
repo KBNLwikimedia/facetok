@@ -6,8 +6,39 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     overflow: hidden;
     height: 100vh;
-    touch-action: none;
+    //touch-action: none;
 }
+
+/* Default: Hide the warning */
+.rotate-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+/* Show warning in landscape */
+@media screen and (orientation: landscape) {
+    body {
+        display: none;
+    }
+
+    .rotate-warning {
+        display: flex;
+    }
+}
+
+
 
 .facetok-card {
     width: 100%;
@@ -28,6 +59,7 @@ body {
     padding: 5px;
     display: flex;
     justify-content: left;
+    touch-action: none;
 }
 
 .wikifaceslogo img {
@@ -57,6 +89,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 4px solid rgba(255, 55, 255, 0.8);
 }
 
 .wplink h2 {
@@ -101,20 +134,22 @@ body {
 
 .bottom-banner {
     position: sticky;
-    bottom: 10;
+    bottom: 10px;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 40px;
     background: rgba(0, 0, 0, 1);
-    padding: 5px 10px;
+    padding: 5px 5px 5px 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     z-index: 1000;
+    border: 4px solid rgba(55, 55, 255, 0.8);
 }
 
 .bottom-banner a {
+    margin-left: 20px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -122,7 +157,7 @@ body {
 }
 
 .bottom-banner p {
-    margin: 0;
+    margin: 0px;
     text-align: center;
     flex-grow: 1;
     color: #fff;
@@ -132,7 +167,7 @@ body {
 .bottom-banner img {
     width: 100px;
     height: auto;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 
@@ -165,7 +200,6 @@ body {
     }
 
     .bottom-banner p {
-        margin: 5px 0;
         font-size: 12px;
     }
 
@@ -189,17 +223,7 @@ body {
 }
 
 @media (max-width: 400px) {
-    .bottom-banner img {
-        width: 60px;
-    }
 
-    .bottom-banner p, .bottom-banner a {
-        font-size: 10px;
-    }
-
-    .bottom-banner {
-        padding: 5px;
-    }
     .wplink .read-more-link,
     .wplink .fixed-commons-link {
         font-size: 16px;
@@ -207,16 +231,16 @@ body {
 }
 
 @media (max-width: 300px) {
+    .bottom-banner {
+        gap: 0px;
+        margin-bottom: 10px;
+    }
     .bottom-banner img {
         width: 50px;
     }
 
     .bottom-banner p, .bottom-banner a {
         font-size: 9px;
-    }
-
-    .bottom-banner {
-        gap: 0px;
     }
 }
 
