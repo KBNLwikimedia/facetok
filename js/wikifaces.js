@@ -9,7 +9,7 @@ let initialDistance = 0;
 // Detect orientation change and warn the user
 window.addEventListener("orientationchange", () => {
     if (window.orientation === 90 || window.orientation === -90) {
-        alert("This aaaapp is best viewed in portrait mode. Please rotate your device.");
+        alert("This app is best viewed in portrait mode. Please rotate your device.");
     }
 });
 
