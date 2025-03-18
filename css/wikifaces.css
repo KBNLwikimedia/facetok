@@ -69,6 +69,7 @@ body {
 
 .wplink p {
     margin-top: 10px;
+    margin-bottom: 30px;
     font-size: 20px;
     color: #fff;
 }
@@ -80,16 +81,12 @@ body {
     font-weight: 600;
 }
 
-
-
-
 /* ------------------ Read More and Commons Link */
 .read-more-container,
 .fixed-commons-link-container {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 20px;
-    margin-top: 0px;
     border: 0px solid rgba(255, 255, 255, 0.1);
 }
 

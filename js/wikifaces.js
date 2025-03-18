@@ -82,7 +82,7 @@ async function fetchPortraits() {
 
 async function fetchWikipediaExtract(portrait) {
     try {
-        const MAX_WORDS = 60;
+        const MAX_WORDS = 40;
         const MAX_CHARACTERS = 250;
 
         const title = portrait.wikipediaLink.split('/').pop();
@@ -106,18 +106,9 @@ async function fetchWikipediaExtract(portrait) {
             }
             extract += '...';
         }
-
         // Commons URL creation after fetch success
         const filename = portrait.imageUrl.split('/').pop();
         const commonsUrl = `https://commons.m.wikimedia.org/wiki/File:${filename}`;
-
-        extract += `<div class="read-more-container">
-                        <a href="${portrait.wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a>
-                    </div>`;
-        extract += `<div class="fixed-commons-link-container">
-                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
-                    </div>`;
-
         return extract;
     } catch (error) {
         console.error(error);
@@ -144,6 +135,12 @@ async function displayPortrait(portrait) {
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
                 <p>${extract}</p>
+                <div class="read-more-container">
+                        <a href="${portrait.wikipediaLink}" target="_blank" class="read-more-link">Lees verder &rarr;</a>
+                </div>
+                <div class="fixed-commons-link-container">
+                        <a href="${commonsUrl}" target="_blank" id="open-lightbox" class="fixed-commons-link">Bekijk afbeelding &rarr;</a>
+                </div>
             </div>
             <div class="icon-container">
                 <div id="heart-icon" class="icon-button">
@@ -153,7 +150,6 @@ async function displayPortrait(portrait) {
                     <img src="media/share-icon.png" alt="Share Icon" loading="lazy">
                 </div>
             </div>
-            <!-- Updated HTML structure for alignment -->
             <div class="bottom-banner">
                 <div>
                     <a href="https://github.com/KBNLwikimedia/wikifaces" target="_blank">WikiFaces</a>
