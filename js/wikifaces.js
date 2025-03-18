@@ -82,7 +82,7 @@ async function fetchPortraits() {
 
 async function fetchWikipediaExtract(portrait) {
     try {
-        const MAX_WORDS = 40;
+        const MAX_WORDS = 50;
         const MAX_CHARACTERS = 250;
 
         const title = portrait.wikipediaLink.split('/').pop();
