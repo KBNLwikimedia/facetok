@@ -7,11 +7,11 @@ let scale = 1;
 let initialDistance = 0;
 
 // Detect orientation change and warn the user
-window.addEventListener("orientationchange", () => {
-    if (window.orientation === 90 || window.orientation === -90) {
-        alert("This app is best viewed in portrait mode. Please rotate your device.");
-    }
-});
+//window.addEventListener("orientationchange", () => {
+//    if (window.orientation === 90 || window.orientation === -90) {
+//        alert("This app is best viewed in portrait mode. Please rotate your device.");
+//    }
+//});
 
 document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.createElement('div');
@@ -60,7 +60,7 @@ async function fetchPortraits() {
 
             const [imageUrl, title, description, wikipediaLink] = parts.map(part => part.trim());
 
-            if (!imageUrl || !title || !wikipediaLink) {
+            if (!imageUrl || !title || !description || !wikipediaLink) {
                 console.warn(`Incomplete data in line ${index + 1}: ${line}`);
                 return null;
             }
@@ -139,10 +139,11 @@ async function displayPortrait(portrait) {
             </div>
             <img class="portrait" src="${portrait.imageUrl}" alt="Portrait of ${portrait.title}" loading="lazy">
             <div class="wplink">
+                <em>${portrait.description}</em>
                 <h2>
                     <a href="${portrait.wikipediaLink}" target="_blank">${portrait.title}</a>
                 </h2>
-                <p id="extract-container">${extract}</p>
+                <p>${extract}</p>
             </div>
             <div class="icon-container">
                 <div id="heart-icon" class="icon-button">
