@@ -8,7 +8,7 @@ body {
     height: 100vh;
 }
 
-.facetok-card {
+.portrait-card {
     width: 100%;
     height: 100vh;
     background-color: #1e1e1e;
@@ -19,6 +19,7 @@ body {
     align-items: center;
 }
 
+/* ------------------ Logo */
 .wikifaceslogo {
     position: absolute;
     top: 15px;
@@ -43,11 +44,12 @@ body {
     transition: transform 0.2s ease;
 }
 
+/*  ------------------  WP Link */
 .wplink {
     position: fixed;
     width: 100%;
     left: 0;
-    bottom: 60px; /* Adjust this value to move it lower */
+    bottom: 50px; /* Adjust this value to move it lower */
     backdrop-filter: blur(4px);
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -78,6 +80,9 @@ body {
     font-weight: 600;
 }
 
+
+
+/* ------------------ Read More and Commons Link */
 .read-more-container,
 .fixed-commons-link-container {
     position: absolute;
@@ -99,6 +104,7 @@ body {
     text-decoration: none;
 }
 
+/* ------------------ Bottom Banner */
 .bottom-banner {
     position: fixed;
     bottom: 0px;
@@ -138,6 +144,8 @@ body {
     margin-right: 20px;
 }
 
+
+/* ------------------ Social Icons */
 .icon-container {
     position: fixed;
     top: 30px; /* Makes position flexible with screen height */
@@ -168,118 +176,7 @@ body {
     transform: scale(1.1);
 }
 
-
-@media (max-width: 600px) {
-    .facetok-card {
-        flex-direction: column;
-    }
-
-    .wikifaceslogo img {
-        width: 100px;
-    }
-
-    .wplink {
-        height: auto;
-        padding: 20px;
-    }
-
-    .wplink a {
-        font-size: 24px;
-        font-weight: 600;
-    }
-    .wplink p {
-        font-size: 18px;
-    }
-    .bottom-banner img {
-        width: 80px;
-    }
-    .bottom-banner a {
-        font-size: 14px;
-    }
-    .bottom-banner p {
-        font-size: 12px;
-    }
-
-    .read-more-container,
-    .fixed-commons-link-container {
-        position: static;
-        margin-top: 10px;
-    }
-    .wplink .fixed-commons-link ,
-    .wplink .read-more-link {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 18px;
-    }
-
-    .icon-button {
-        width: 35px;
-        height: 35px;
-    }
-
-    .icon-button img {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-@media (max-width: 400px) {
-    .wplink .read-more-link,
-    .wplink .fixed-commons-link {
-        font-size: 16px;
-    }
-
-    .bottom-banner a {
-        font-size: 14px;
-    }
-    .bottom-banner p {
-        font-size: 12px;
-    }
-
-    .icon-button {
-        width: 30px;
-        height: 30px;
-    }
-
-    .icon-button img {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-@media (max-height: 300px) {
-    .bottom-banner {
-        display: none;
-    }
-}
-
-@media (max-width: 300px) {
-    .bottom-banner {
-        gap: 0px;
-        margin-bottom: 10px;
-    }
-    .bottom-banner img {
-        width: 50px;
-    }
-
-    .bottom-banner a {
-        font-size: 12px;
-    }
-    .bottom-banner p {
-        font-size: 10px;
-    }
-
-    .icon-button {
-        width: 25px;
-        height: 25px;
-    }
-
-    .icon-button img {
-        width: 16px;
-        height: 16px;
-    }
-}
-
+/* ----------------- Lightbox */
 
 .lightbox {
     display: none;
@@ -323,6 +220,8 @@ body {
     cursor: pointer;
 }
 
+/* ---------------- Heart Animation */
+
 #heart-container {
     position: fixed;
     top: 0;
@@ -340,7 +239,7 @@ body {
     background-image: url('../media/heart-icon-red.png');
     background-size: cover;
     background-repeat: no-repeat;
-    animation: flyLeft 1s ease-out forwards;
+    animation: flyLeft 2s ease-out forwards;
     pointer-events: none;
 }
 
@@ -354,3 +253,108 @@ body {
         opacity: 0;
     }
 }
+
+/*---------------- Responsive --------------------------------- */
+
+@media (max-width: 600px) {
+    .facetok-card {
+        flex-direction: column;
+    }
+    .wikifaceslogo img {
+        width: 100px;
+    }
+    .wplink {
+        height: auto;
+        padding: 20px;
+    }
+    .wplink a {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .wplink p {
+        font-size: 18px;
+    }
+    .read-more-container,
+    .fixed-commons-link-container {
+        position: static;
+        margin-top: 10px;
+    }
+    .wplink .fixed-commons-link ,
+    .wplink .read-more-link {
+        display: block;
+        margin-bottom: 0px;
+        font-size: 18px;
+        /*  border: 2px solid rgba(55, 55, 55, 0.8); */ 
+    }
+    .bottom-banner img {
+        width: 80px;
+    }
+    .bottom-banner a {
+        font-size: 14px;
+    }
+    .bottom-banner p {
+        font-size: 12px;
+    }
+    .icon-button {
+        width: 35px;
+        height: 35px;
+    }
+    .icon-button img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .wplink a {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .wplink .read-more-link,
+    .wplink .fixed-commons-link {
+        font-size: 18px;
+    }
+    .bottom-banner a {
+        font-size: 14px;
+    }
+    .bottom-banner p {
+        font-size: 12px;
+    }
+    .icon-button {
+        width: 30px;
+        height: 30px;
+    }
+    .icon-button img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+
+@media (max-width: 300px) {
+    .bottom-banner {
+        gap: 0px;
+        margin-bottom: 10px;
+    }
+    .bottom-banner img {
+        width: 50px;
+    }
+
+    .bottom-banner a {
+        font-size: 12px;
+    }
+    .bottom-banner p {
+        font-size: 10px;
+    }
+
+    .icon-button {
+        width: 25px;
+        height: 25px;
+    }
+
+    .icon-button img {
+        width: 16px;
+        height: 16px;
+    }
+}
+

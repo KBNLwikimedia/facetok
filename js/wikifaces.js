@@ -82,8 +82,8 @@ async function fetchPortraits() {
 
 async function fetchWikipediaExtract(portrait) {
     try {
-        const MAX_WORDS = 50;
-        const MAX_CHARACTERS = 200;
+        const MAX_WORDS = 60;
+        const MAX_CHARACTERS = 250;
 
         const title = portrait.wikipediaLink.split('/').pop();
         const apiUrl = `https://nl.wikipedia.org/api/rest_v1/page/summary/${title}`;
@@ -133,7 +133,7 @@ async function displayPortrait(portrait) {
 
     const container = document.getElementById('portrait-container');
     container.innerHTML = `
-        <div class="facetok-card">
+        <div class="portrait-card">
             <div class="wikifaceslogo">
                 <img src="media/wikifaces-logo.png" alt="WikiFaces Logo" loading="lazy">
             </div>
